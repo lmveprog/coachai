@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /Users/lmve/Desktop/coachai/frontend/src/app/challenges/[slug]/page.tsx)"
+    ]
+  }
+}
