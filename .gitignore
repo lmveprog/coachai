@@ -29,3 +29,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# editor / tooling
+.claude/

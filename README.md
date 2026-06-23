@@ -56,9 +56,9 @@ Plateforme d'apprentissage gamifiée en data science. Les utilisateurs soumetten
 | Auth | python-jose + bcrypt | 3.3.0 / 3.2.2 |
 | Validation | Pydantic | 2.9.2 |
 | Payments | Stripe | 11.2.0 |
-| LLM chatbot | Groq (primary) / Anthropic (fallback) | — |
-| Emails | Resend | — |
-| Container runtime | Docker SDK (Python) | — |
+| LLM chatbot | Groq (primary) / Anthropic (fallback) | - |
+| Emails | Resend | - |
+| Container runtime | Docker SDK (Python) | - |
 | Database | PostgreSQL | 16 |
 | Cache / blacklist | Redis | 7 |
 
@@ -171,14 +171,14 @@ coachai/
 
 | Service | Image / Build | Port hôte | Dépendances |
 |---------|---------------|-----------|-------------|
-| `postgres` | postgres:16-alpine | 5432 | — |
-| `redis` | redis:7-alpine | 6379 | — |
+| `postgres` | postgres:16-alpine | 5432 | - |
+| `redis` | redis:7-alpine | 6379 | - |
 | `backend` | ./backend | 8000 | postgres (healthy), redis (healthy) |
 | `frontend` | ./frontend | 3000 | backend |
 | `judge` | ./judge | 8001 | redis |
-| `sandbox-python` | ./infra/sandboxes/python | — | profile `build-sandboxes` |
-| `sandbox-sql` | ./infra/sandboxes/sql | — | profile `build-sandboxes` |
-| `sandbox-r` | ./infra/sandboxes/r | — | profile `build-sandboxes` |
+| `sandbox-python` | ./infra/sandboxes/python | - | profile `build-sandboxes` |
+| `sandbox-sql` | ./infra/sandboxes/sql | - | profile `build-sandboxes` |
+| `sandbox-r` | ./infra/sandboxes/r | - | profile `build-sandboxes` |
 
 Le judge monte `/var/run/docker.sock` pour créer des containers éphémères. Il tourne en mode `privileged`.
 
@@ -280,7 +280,7 @@ Fichier : `.env` à la racine.
 | `JWT_ALGORITHM` | `HS256` |
 | `JWT_ACCESS_TOKEN_EXPIRE_MINUTES` | Durée du token d'accès (défaut 60) |
 | `JWT_REFRESH_TOKEN_EXPIRE_DAYS` | Durée du refresh token (défaut 30) |
-| `SUPABASE_URL` | Optionnel — pour OAuth Supabase |
+| `SUPABASE_URL` | Optionnel - pour OAuth Supabase |
 | `SUPABASE_ANON_KEY` | Optionnel |
 | `SUPABASE_SERVICE_ROLE_KEY` | Optionnel |
 
@@ -402,7 +402,7 @@ POST   /chat/message               Message au chatbot IA (Groq → Claude fallba
 
 ---
 
-## Judge — Exécution isolée
+## Judge - Exécution isolée
 
 ### Pipeline
 
@@ -453,7 +453,7 @@ Maj ELO + badges + submission.status
 
 Tous les containers tournent avec un utilisateur non-privilégié (`sandbox`, uid 1000/1001).
 
-### SQL — format context.json
+### SQL - format context.json
 
 Pour les challenges SQL, le judge injecte les données de setup via `/code/context.json` :
 ```json
@@ -553,7 +553,7 @@ Pour les challenges SQL, le judge injecte les données de setup via `/code/conte
 
 | Trigger | Valeur | Description |
 |---------|--------|-------------|
-| `first_solve` | — | Premier challenge résolu |
+| `first_solve` | - | Premier challenge résolu |
 | `streak` | 7 / 30 / 100 | Jours consécutifs d'activité |
 | `category_master` | 5 / 10 / 25 | Challenges résolus dans une catégorie |
 | `elo_milestone` | 1200 / 1500 / 1800 / 2200 | Paliers ELO atteints |
@@ -564,7 +564,7 @@ Les badges sont vérifiés et attribués automatiquement après chaque soumissio
 
 ---
 
-## Auth — flux complet
+## Auth - flux complet
 
 ```
 Register → hashed_password (bcrypt) → access_token (60min) + refresh_token (30j)
@@ -648,7 +648,7 @@ npm install
 NEXT_PUBLIC_API_URL=http://localhost:8000 npm run dev
 ```
 
-Le judge nécessite Docker pour créer des containers — il ne peut pas tourner sans daemon Docker.
+Le judge nécessite Docker pour créer des containers - il ne peut pas tourner sans daemon Docker.
 
 ---
 
